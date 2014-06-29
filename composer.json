@@ -26,8 +26,8 @@
         "zendframework/zend-mvc" : "~2.3"
     },
     "suggest": {
-        "prooph/ProophEventStoreModule": "Use ProophEventStore within your ZF2 project",
-        "prooph/ProophCrudModule": "Use CRUD functionality together with Prooph components"
+        "prooph/prooph-event-store-module": "Use ProophEventStore within your ZF2 project",
+        "prooph/prooph-crud-bridge-module": "Use CRUD functionality together with Prooph components"
     },
     "require-dev": {
         "phpunit/phpunit": "3.7.*"
