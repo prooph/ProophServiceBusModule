@@ -34,8 +34,8 @@
     },
     "autoload": {
         "psr-0": { 
-            "Prooph\\ProophServiceBusModule\\": "src/",
-            "Prooph\\ProophServiceBusModuleTest\\": "tests/"
+            "ProophServiceBusModule\\": "src/",
+            "ProophServiceBusModuleTest\\": "tests/"
         }
     }
 }
