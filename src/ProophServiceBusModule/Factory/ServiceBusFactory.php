@@ -11,6 +11,7 @@
 
 namespace ProophServiceBusModule\Factory;
 
+use Prooph\ServiceBus\Service\ServiceBusConfiguration;
 use Prooph\ServiceBus\Service\ServiceBusManager;
 use Zend\ServiceManager\Config;
 use Zend\ServiceManager\FactoryInterface;
@@ -34,22 +35,23 @@ class ServiceBusFactory implements FactoryInterface
     {
         $config = $serviceLocator->get('configuration');
 
-        $sbmConfig = null;
         $initializers = array();
 
+        $sbmConfig = array();
+
         if (isset($config['prooph.service_bus'])) {
-            if (isset($config['prooph.service_bus']['service_bus_manager'])) {
-                $sbmConfig = new Config($config['prooph.service_bus']['service_bus_manager']);
-            }
 
-
-            if (isset($config['prooph.service_bus']['service_bus_initializers'])) {
-                foreach ($config['prooph.service_bus']['service_bus_initializers'] as $initializerAlias)
+            if (isset($config['prooph.service_bus']['initializers'])) {
+                foreach ($config['prooph.service_bus']['initializers'] as $initializerAlias)
                     $initializers[] = $serviceLocator->get($initializerAlias);
+
+                unset($config['prooph.service_bus']['initializers']);
             }
+
+            $sbmConfig = $config['prooph.service_bus'];
         }
 
-        $sbm = new ServiceBusManager($sbmConfig);
+        $sbm = new ServiceBusManager(new ServiceBusConfiguration($sbmConfig));
 
         $sbm->setMainServiceLocator($serviceLocator);
 
