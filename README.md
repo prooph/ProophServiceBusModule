@@ -3,6 +3,8 @@ ProophServiceBusModule
 
 Zend Framework 2 Module for [ProophServiceBus](https://github.com/prooph/service-bus)
 
+!The module is currently out-of-date cause it only supports ProophServiceBus < v0.4.0.
+
 [![Build Status](https://travis-ci.org/prooph/ProophServiceBusModule.svg?branch=master)](https://travis-ci.org/prooph/ProophServiceBusModule)
 
 Installation
