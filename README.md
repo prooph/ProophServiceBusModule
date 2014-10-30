@@ -3,14 +3,12 @@ ProophServiceBusModule
 
 Zend Framework 2 Module for [ProophServiceBus](https://github.com/prooph/service-bus)
 
-!The module is currently out-of-date cause it only supports ProophServiceBus < v0.4.0.
-
 [![Build Status](https://travis-ci.org/prooph/ProophServiceBusModule.svg?branch=master)](https://travis-ci.org/prooph/ProophServiceBusModule)
 
 Installation
 ------------
 
-You can install ProophServiceBusModule via composer by adding `"prooph/prooph-service-bus-module": "~0.1"` as requirement to your composer.json.
+You can install ProophServiceBusModule via composer by adding `"prooph/prooph-service-bus-module": "~1.0"` as requirement to your composer.json.
 
 #### Post installation
 
@@ -33,13 +31,17 @@ Configuration
 Copy the [prooph.servicebus.global.php](https://github.com/prooph/ProophServiceBusModule/blob/master/config/prooph.servicebus.global.php) to your
 `config/autoload` directory and adjust the config to meet your needs.
 
-Retrieve ProophServiceBus
--------------------------
+Retrieve A ProophServiceBus 
+---------------------------
 
-The ProophServiceBus can be retrieved from ServiceManager by using the alias `prooph.service_bus`
+The command bus can be retrieved from ServiceManager by using the alias `prooph.psb.command_bus`
 
 ```php
-//Assume we are in a controller
+$commandBus = $services->get('prooph.psb.command_bus');
+```
 
-$serviceBusManager = $this->getServiceLocator()->get('prooph.service_bus');
+The event bus can be retrieved from ServiceManager by using the alias `prooph.psb.event_bus`
+
+```php
+$eventBus = $services->get('prooph.psb.event_bus');
 ```
