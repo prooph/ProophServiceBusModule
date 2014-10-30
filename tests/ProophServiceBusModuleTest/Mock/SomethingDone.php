@@ -11,7 +11,7 @@
 
 namespace ProophServiceBusModuleTest\Mock;
 
-use Prooph\ServiceBus\Event\AbstractEvent;
+use Prooph\ServiceBus\Event;
 
 /**
  * Class SomethingDone
@@ -19,15 +19,17 @@ use Prooph\ServiceBus\Event\AbstractEvent;
  * @package Prooph\ServiceBusTest\Mock
  * @author Alexander Miertsch <contact@prooph.de>
  */
-class SomethingDone extends AbstractEvent
+class SomethingDone extends Event
 {
+    protected $handled = true;
+
     /**
      * @param string $dataString
      * @return SomethingDone
      */
     public static function fromData($dataString)
     {
-        return new self(array('data' => $dataString));
+        return new self(__CLASS__, array('data' => $dataString));
     }
     /**
      * @return string
@@ -35,6 +37,19 @@ class SomethingDone extends AbstractEvent
     public function data()
     {
         return $this->payload['data'];
+    }
+
+    public function handle()
+    {
+        $this->handled = true;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isHandled()
+    {
+        return $this->handled;
     }
 }
  

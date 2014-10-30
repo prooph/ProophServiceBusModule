@@ -11,8 +11,7 @@
 
 namespace ProophServiceBusModuleTest\Mock;
 
-use Codeliner\ArrayReader\ArrayReader;
-use Prooph\ServiceBus\Command\AbstractCommand;
+use Prooph\ServiceBus\Command;
 
 /**
  * Class DoSomething
@@ -20,7 +19,7 @@ use Prooph\ServiceBus\Command\AbstractCommand;
  * @package Prooph\ServiceBusTest\Mock
  * @author Alexander Miertsch <contact@prooph.de>
  */
-class DoSomething extends AbstractCommand
+class DoSomething extends Command
 {
     protected $handled = true;
 
@@ -38,8 +37,7 @@ class DoSomething extends AbstractCommand
      */
     public function data()
     {
-        $arrayReader = new ArrayReader($this->payload);
-        return $arrayReader->stringValue('data');
+        return $this->payload['data'];
     }
 
     public function handle()

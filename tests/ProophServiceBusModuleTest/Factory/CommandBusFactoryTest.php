@@ -15,20 +15,26 @@ use ProophServiceBusModuleTest\Bootstrap;
 use ProophServiceBusModuleTest\Mock\DoSomething;
 use ProophServiceBusModuleTest\TestCase;
 
-class ServiceBusFactoryTest extends TestCase
+/**
+ * Class CommandBusFactoryTest
+ *
+ * @package ProophServiceBusModuleTest\Factory
+ * @author Alexander Miertsch <kontakt@codeliner.ws>
+ */
+class CommandBusFactoryTest extends TestCase
 {
     /**
      * @test
      */
-    public function it_fabricates_a_service_bus_manager_by_using_default_config()
+    public function it_fabricates_a_command_bus_by_using_default_config()
     {
-        $sbm = Bootstrap::getServiceManager()->get("prooph.service_bus");
+        $commandBus = Bootstrap::getServiceManager()->get("prooph.psb.command_bus");
 
-        $this->assertInstanceOf("Prooph\ServiceBus\Service\ServiceBusManager", $sbm);
+        $this->assertInstanceOf("Prooph\ServiceBus\CommandBus", $commandBus);
 
         $doSomething = DoSomething::fromData("test command");
 
-        $sbm->route($doSomething);
+        $commandBus->dispatch($doSomething);
 
         $this->assertTrue($doSomething->isHandled());
     }

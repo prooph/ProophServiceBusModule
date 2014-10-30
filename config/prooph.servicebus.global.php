@@ -16,32 +16,46 @@
  */
 $settings = array(
     /**
-     * The Prooph\ServiceBus\Service\ServiceBusManager is a ZF2 ServiceManager.
-     * You can use the following config to set up the various services especially command and event handlers.
+     * Define a list of utils that should be used by the command bus.
+     * Each util should be available as a service.
+     * Use the ServiceManager alias in the list.
      */
-    'service_bus_manager' => array(
-        //'factories' => array(),
-        //'invokables' => array(),
+    'command_bus' => array(
+        //Default list
+        'prooph.psb.command_router',
+        'prooph.psb.service_locator_proxy',
+        'prooph.psb.callback_invoke_strategy',
+        'prooph.psb.handle_command_invoke_strategy',
+    ),
+    /**
+     * Define a list of utils that should be used by the event bus.
+     * Each util should be available as a service.
+     * Use the ServiceManager alias in the list.
+     */
+    'event_bus' => array(
+        //Default list
+        'prooph.psb.event_router',
+        'prooph.psb.service_locator_proxy',
+        'prooph.psb.callback_invoke_strategy',
+        'prooph.psb.on_event_invoke_strategy',
     ),
     /**
      * Configure command routing
+     * @see https://github.com/prooph/service-bus/blob/master/docs/plugins.md#proophservicebusroutercommandrouter
      */
-    'command_map' => array(
+    'command_router_map' => array(
 
     ),
     /**
      * Configure event routing
+     * @see https://github.com/prooph/service-bus/blob/master/docs/plugins.md#proophservicebusroutereventrouter
      */
-    'event_map' => array(
+    'event_router_map' => array(
 
-    ),
-    /**
-     * You can add custom ServiceBusInitializers by adding their ServiceLocator aliases to the list
-     */
-    //'initializers' => array(),
+    )
 );
 
 /* DO NOT EDIT BELOW THIS LINE */
 return array(
-    'prooph.service_bus' => $settings
+    'prooph.psb' => $settings
 );

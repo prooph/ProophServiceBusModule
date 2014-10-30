@@ -40,10 +40,16 @@ class Module
     {
         return array(
             'invokables' => array(
-                'prooph.service_bus.local_initializer' => 'Prooph\ServiceBus\Initializer\LocalSynchronousInitializer',
+                'prooph.psb.callback_invoke_strategy'       => 'Prooph\ServiceBus\InvokeStrategy\CallbackStrategy',
+                'prooph.psb.handle_command_invoke_strategy' => 'Prooph\ServiceBus\InvokeStrategy\HandleCommandStrategy',
+                'prooph.psb.on_event_invoke_strategy'       => 'Prooph\ServiceBus\InvokeStrategy\OnEventStrategy',
             ),
             'factories' => array(
-                'prooph.service_bus' => 'ProophServiceBusModule\Factory\ServiceBusFactory',
+                'prooph.psb.command_bus'            => 'ProophServiceBusModule\CommandBusFactory',
+                'prooph.psb.event_bus'              => 'ProophServiceBusModule\EventBusFactory',
+                'prooph.psb.command_router'         => 'ProophServiceBusModule\CommandRouterFactory',
+                'prooph.psb.event_router'           => 'ProophServiceBusModule\EventRouterFactory',
+                'prooph.psb.service_locator_proxy'  => 'ProophServiceBusModule\ServiceLocatorProxyFactory',
             )
         );
     }

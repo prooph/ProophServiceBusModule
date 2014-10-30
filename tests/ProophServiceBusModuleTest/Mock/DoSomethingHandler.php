@@ -27,7 +27,7 @@ class DoSomethingHandler
     /**
      * @param DoSomething $aCommand
      */
-    public function doSomething(DoSomething $aCommand)
+    public function handleDoSomething(DoSomething $aCommand)
     {
         $this->lastCommand = $aCommand;
         $this->lastCommand->handle();

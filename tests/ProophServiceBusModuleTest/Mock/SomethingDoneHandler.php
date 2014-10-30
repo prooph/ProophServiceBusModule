@@ -27,8 +27,9 @@ class SomethingDoneHandler
     /**
      * @param SomethingDone $event
      */
-    public function somethingDone(SomethingDone $event)
+    public function onSomethingDone(SomethingDone $event)
     {
+        $event->handle();
         $this->lastEvent = $event;
     }
 
