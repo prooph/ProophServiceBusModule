@@ -21,7 +21,7 @@
     ],
     "require": {
         "php": ">=5.4",
-        "prooph/service-bus" : "~1.1",
+        "prooph/service-bus" : "~2.0",
         "zendframework/zend-loader" : "~2.3",
         "zendframework/zend-servicemanager" : "~2.3",
         "zendframework/zend-modulemanager" : "~2.3",
