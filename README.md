@@ -1,7 +1,8 @@
 ProophServiceBusModule
 ======================
 
-Zend Framework 2 Module for [ProophServiceBus](https://github.com/prooph/service-bus)
+[deprecated] Zend Framework 2 Module for [ProophServiceBus](https://github.com/prooph/service-bus).
+This module only support ProophServiceBus <= 2.x. If you want to use PSB v3+ with ZF2 then checkout [proophessor](https://github.com/prooph/proophessor)
 
 [![Build Status](https://travis-ci.org/prooph/ProophServiceBusModule.svg?branch=master)](https://travis-ci.org/prooph/ProophServiceBusModule)
 
